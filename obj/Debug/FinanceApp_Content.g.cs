@@ -8,6 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/financedb.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/financedb_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financedb.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("financedb_log.ldf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/model1.tt")]
 

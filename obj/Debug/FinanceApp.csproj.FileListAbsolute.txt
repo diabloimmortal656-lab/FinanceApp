@@ -36,3 +36,5 @@ C:\Users\1\source\repos\FinanceApp\FinanceApp\obj\Debug\FinanceApp.exe
 C:\Users\1\source\repos\FinanceApp\FinanceApp\obj\Debug\FinanceApp.pdb
 C:\Users\1\source\repos\FinanceApp\FinanceApp\obj\Debug\Views\Stats.g.cs
 C:\Users\1\source\repos\FinanceApp\FinanceApp\obj\Debug\Views\Stats.baml
+C:\Users\1\source\repos\FinanceApp\FinanceApp\bin\Debug\FinanceDB.mdf
+C:\Users\1\source\repos\FinanceApp\FinanceApp\bin\Debug\FinanceDB_log.ldf
