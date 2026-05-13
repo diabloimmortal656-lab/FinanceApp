@@ -1,0 +1,264 @@
+﻿<Application x:Class="FinanceApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:FinanceApp"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style x:Key="HeaderButtonStyle" TargetType="Button">
+
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="10,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+
+                <!-- Наведение -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#D8C9F0"/>
+                </Trigger>
+
+                <!-- Нажатие -->
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="#B8A4E3"/>
+                </Trigger>
+
+            </Style.Triggers>
+
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#71588a"/>
+            <!-- цвет фона заголовка -->
+            <Setter Property="Foreground" Value="White"/>
+            <!-- цвет текста -->
+            <Setter Property="FontSize" Value="16"/>
+            <!-- размер шрифта -->
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <!-- жирность -->
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <!-- центр текста -->
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <!--центрирование текста-->
+            <Setter Property="Height" Value="40"/>
+            <!-- высота строки заголовка -->
+        </Style>
+        <Style TargetType="DataGridRow">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,2,0,2"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#352940"/>
+
+            <Style.Triggers>
+
+                <!-- УБРАЛ hover (или можешь оставить прозрачным) -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+
+                <!-- УБРАЛ выделение -->
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#352940"/>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="#4d00b3"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+        </Style>
+
+        <Style x:Key="TextBox" TargetType="TextBox">
+
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="TextBox">
+
+                        <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="20"
+                        BorderThickness="2"
+                        BorderBrush="#E0E0E0"
+                        Padding="8,6">
+
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Наведение -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border"
+                                Property="BorderBrush"
+                                Value="#C8B6FF"/>
+                            </Trigger>
+
+                            <!-- Фокус -->
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="border"
+                                Property="BorderBrush"
+                                Value="#7A4FC3"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <Style x:Key="PasswordBox" TargetType="PasswordBox">
+    
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="PasswordBox">
+
+                        <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="20"
+                        BorderThickness="2"
+                        BorderBrush="#E0E0E0">
+
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Наведение -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border"
+                                Property="BorderBrush"
+                                Value="#C8B6FF"/>
+                            </Trigger>
+
+                            <!-- Фокус -->
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="border"
+                                Property="BorderBrush"
+                                Value="#7A4FC3"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        <Style x:Key="TextBoxPop" TargetType="TextBox">
+
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="TextBox">
+
+                        <Border x:Name="border"
+                Background="{TemplateBinding Background}"
+                CornerRadius="20"
+                BorderThickness="2"
+                Width="280"
+                BorderBrush="#ffd4fe"
+                Padding="8,6">
+
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Наведение -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border"
+                        Property="BorderBrush"
+                        Value="#C8B6FF"/>
+                            </Trigger>
+
+                            <!-- Фокус -->
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter TargetName="border"
+                        Property="BorderBrush"
+                        Value="#7A4FC3"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="RoundButton30" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        CornerRadius="30"
+                        Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

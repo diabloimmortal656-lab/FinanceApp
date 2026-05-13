@@ -1,0 +1,94 @@
+﻿<Page x:Class="FinanceApp.Views.Auth"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FinanceApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="White"
+      Title="Auth">
+
+    <Grid>
+
+        <!-- Заголовок -->
+        <TextBlock Text="FinanceApp" 
+                   FontSize="28" 
+                   FontWeight="Bold" 
+                   Foreground="#71588a" 
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center" 
+                   Margin="0,30,0,0"/>
+
+        <!-- Панель логина -->
+        <Border Margin="50,80,50,50" 
+                CornerRadius="20" 
+                Padding="25">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#9e78c4" Offset="0"/>
+                    <GradientStop Color="#7d6299" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel VerticalAlignment="Center">
+
+                <!-- Логин -->
+                <TextBlock Text="Логин" Foreground="White" FontSize="16" Margin="8,0,0,0"/>
+
+                <TextBox x:Name="tbUser" Style="{StaticResource TextBox}" Margin="0,8,0,8"/>
+
+                <!-- Пароль -->
+                <TextBlock Text="Пароль" Foreground="White" FontSize="16" Margin="8,0,0,0"/>
+
+                <PasswordBox x:Name="tbPassword" Style="{StaticResource PasswordBox}" Margin="0,8,0,8"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,15" VerticalAlignment="Center">
+                    <CheckBox x:Name="RememberMeCheckBox" 
+              Content="Запомнить меня" 
+              Foreground="White" 
+              VerticalAlignment="Center"/>
+                </StackPanel>
+
+
+                <!-- Кнопка входа -->
+                <Button Content="Войти" 
+                        Height="40" 
+                        Background="#30FFFFFF" 
+                        Foreground="White" 
+                        BorderBrush="#40FFFFFF" 
+                        Click="LoginButton_Click"
+                        FontSize="16">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="20">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button Content="Создать аккаунт" Height="35" Margin="0,10,0,0" Background="#10000000"
+            Foreground="White" BorderBrush="#40FFFFFF" Click="RegisterButton_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="20">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+</Page>

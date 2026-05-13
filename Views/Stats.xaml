@@ -1,0 +1,1363 @@
+﻿<Page x:Class="FinanceApp.Views.Stats"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FinanceApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="White"
+      Title="Page1">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- HEADER -->
+        <Border Background="#71588a" Height="70">
+
+            <Grid Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="FinanceApp • Статистика"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           VerticalAlignment="Bottom"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Style="{StaticResource HeaderButtonStyle}" Content="Главная" Click="Home_Click"/>
+                    <Button Style="{StaticResource HeaderButtonStyle}" Content="Транзакции" Click="Transaction_Click"/>
+                    <Button Style="{StaticResource HeaderButtonStyle}" Content="Долги" Click="Debt_Click"/>
+                    <Button Style="{StaticResource HeaderButtonStyle}" Content="Статистика"/>
+                    <Button Style="{StaticResource HeaderButtonStyle}" Content="Категории" Click="CategoriesPage_Click"/>
+                    <Button Style="{StaticResource HeaderButtonStyle}" Content="Профиль" Click="Profile_Click"/>
+                    <Button Style="{StaticResource HeaderButtonStyle}" Content="Выйти из профиля" Foreground="Red" Click="Close"/>
+                </StackPanel>
+            </Grid>
+
+        </Border>
+
+        <!-- CONTENT -->
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Hidden">
+
+            <StackPanel Margin="20">
+
+                <!-- HERO INSIGHT -->
+                <Border Height="340"
+        CornerRadius="35"
+        Padding="30"
+        Margin="0,0,0,20">
+
+                    <Border.Background>
+
+                        <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+
+                            <GradientStop Color="#9e78c4"
+                          Offset="0"/>
+
+                            <GradientStop Color="#7d6299"
+                          Offset="1"/>
+
+                        </LinearGradientBrush>
+
+                    </Border.Background>
+
+                    <!-- ONE ROOT -->
+                    <StackPanel>
+
+                        <!-- QUICK STATS -->
+                        <Grid Margin="0,0,0,25">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="15"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- AVG CHECK -->
+                            <Border Grid.Column="0"
+                    Height="120"
+                    CornerRadius="25"
+                    Padding="20"
+                    Background="#8a6ca9">
+
+                                <StackPanel VerticalAlignment="Center">
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="🛒 Средний чек"
+                               FontSize="16"
+                               Foreground="#ECECEC"/>
+                                        <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenAvgCheckInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                    </StackPanel>
+                                    
+
+                                    <TextBlock x:Name="txtAverageCheck"
+                               Text="1 240 ₽"
+                               Margin="0,14,0,0"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                                </StackPanel>
+
+                            </Border>
+
+                            <!-- SAVINGS -->
+                            <Border Grid.Column="2"
+                    Height="120"
+                    CornerRadius="25"
+                    Padding="20"
+                    Background="#6fb86d">
+
+                                <StackPanel VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="💸 Сэкономлено за прошлый месяц"
+                               FontSize="16"
+                               Foreground="#ECECEC"/>
+                                        <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenSavedMoneyInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                    </StackPanel>
+                                    
+
+                                    <TextBlock x:Name="txtSavedMoney"
+                               Text="18 400 ₽"
+                               Margin="0,14,0,0"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                                </StackPanel>
+
+                            </Border>
+
+                            <!-- IMPULSE -->
+                            <Border Grid.Column="4"
+                    Height="120"
+                    CornerRadius="25"
+                    Padding="20"
+                    Background="#9e78c4">
+
+                                <StackPanel VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="⚡ Импульсивность"
+                               FontSize="16"
+                               Foreground="#ECECEC"/>
+                                        <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenImpulseInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                    </StackPanel>
+                                    
+
+                                    <TextBlock x:Name="txtImpulse"
+                               Text="СРЕДНЯЯ"
+                               Margin="0,14,0,0"
+                               FontSize="26"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                                </StackPanel>
+
+                            </Border>
+
+                            <!-- STABILITY -->
+                            <Border Grid.Column="6"
+                    Height="120"
+                    CornerRadius="25"
+                    Padding="20"
+                    Background="#7d6299">
+
+                                <StackPanel VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="🛡 Стабильность"
+                               FontSize="16"
+                               Foreground="#ECECEC"/>
+                                        <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenStabilityInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                    </StackPanel>
+                                    
+
+                                    <TextBlock x:Name="txtStability"
+                               Text="82%"
+                               Margin="0,14,0,0"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                                </StackPanel>
+
+                            </Border>
+
+                        </Grid>
+
+                        <!-- HERO -->
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="260"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- LEFT -->
+                            <StackPanel>
+
+                                <TextBlock Text="⚠ Главный инсайт месяца"
+                           FontSize="20"
+                           Foreground="#EAEAEA"/>
+
+                                <TextBlock x:Name="txtMainInsight"
+                           Text="Расходы на развлечения выросли на 38%"
+                           FontSize="34"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="0,15,0,0"
+                           TextWrapping="Wrap"/>
+
+                                <TextBlock x:Name="txtInsightDescription"
+                           Text="Текущий темп расходов выше прошлого месяца"
+                           FontSize="16"
+                           Margin="0,15,0,0"
+                           Foreground="#ECECEC"/>
+
+                            </StackPanel>
+
+                            <!-- RIGHT -->
+                            <Border Grid.Column="1"
+                    Width="260"
+                    Height="130"
+                    CornerRadius="25"
+                    HorizontalAlignment="Right"
+                    Background="#30FFFFFF">
+
+                                <StackPanel VerticalAlignment="Center">
+                                    <StackPanel Margin="40,0,0,0" Orientation="Horizontal">
+                                        <TextBlock Text="Финансовый риск"
+                               FontSize="18"
+                               HorizontalAlignment="Center"
+                               Foreground="#ECECEC"/>
+                                        <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenRiskInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                    </StackPanel>
+                                    
+
+                                    <TextBlock x:Name="txtRisk"
+                               Text="СРЕДНИЙ"
+                               FontSize="34"
+                               FontWeight="Bold"
+                               Foreground="#FFF1A8"
+                               HorizontalAlignment="Center"
+                               Margin="0,12,0,0"/>
+
+                                </StackPanel>
+
+                            </Border>
+
+                        </Grid>
+
+                    </StackPanel>
+
+                </Border>
+
+                <!-- MAIN GRID -->
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.3*"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- LEFT SIDE -->
+                    <StackPanel Grid.Column="0">
+
+                        <!-- CATEGORY ANALYTICS -->
+                        <Border CornerRadius="30"
+                                Padding="25"
+                                Margin="0,0,0,20"
+                                Background="#9e78c4">
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="📊 Категории расходов"
+                                           FontSize="24"
+                                           FontWeight="Bold"
+                                           Foreground="White"/>
+                                    <Button Content="?" Margin="7,0 "
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenCategoryInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                </StackPanel>
+                                
+
+                                <ItemsControl x:Name="TopCategories"
+                                              Margin="0,15,0,0">
+
+                                    <ItemsControl.ItemTemplate>
+
+                                        <DataTemplate>
+
+                                            <Border Background="#25FFFFFF"
+                                                    CornerRadius="18"
+                                                    Padding="15"
+                                                    Margin="0,0,0,10">
+
+                                                <Grid>
+
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel>
+
+                                                        <TextBlock Text="{Binding Name}"
+                                                                   FontSize="18"
+                                                                   FontWeight="SemiBold"
+                                                                   Foreground="White"/>
+
+                                                        <TextBlock Text="{Binding Percent}"
+                                                                   FontSize="14"
+                                                                   Margin="0,4,0,0"
+                                                                   Foreground="#EAEAEA"/>
+
+                                                    </StackPanel>
+
+                                                    <TextBlock Grid.Column="1"
+                                                               Text="{Binding Amount}"
+                                                               FontSize="20"
+                                                               FontWeight="Bold"
+                                                               Foreground="White"
+                                                               VerticalAlignment="Center"/>
+
+                                                </Grid>
+
+                                            </Border>
+
+                                        </DataTemplate>
+
+                                    </ItemsControl.ItemTemplate>
+
+                                </ItemsControl>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- HEATMAP -->
+                        <Border CornerRadius="30"
+                                Padding="25"
+                                Margin="0,0,0,20"
+                                Background="#8d70ad">
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="📅 Активность расходов"
+                                           FontSize="24"
+                                           FontWeight="Bold"
+                                           Foreground="White"/>
+                                    <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenActivityInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                </StackPanel>
+                                
+
+                                <TextBlock Text="Самые активные дни трат"
+                                           Margin="0,8,0,20"
+                                           FontSize="15"
+                                           Foreground="#ECECEC"/>
+                                <!-- WEEK ANALYTICS -->
+                                <Border CornerRadius="30"
+        Padding="25"
+        Margin="0,0,0,20"
+        Background="#8a6ca9">
+
+                                    <StackPanel>
+
+                                        <TextBlock Text="📆 Аналитика недели"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+
+                                        <Grid Margin="0,20,0,0">
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="15"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- BEST -->
+                                            <Border Grid.Column="0"
+                    Height="130"
+                    CornerRadius="20"
+                    Background="#25FFFFFF"
+                    Padding="18">
+
+                                                <StackPanel>
+
+                                                    <TextBlock Text="Лучший день"
+                               FontSize="16"
+                               Foreground="#ECECEC"/>
+
+                                                    <TextBlock x:Name="txtBestDay"
+                               Text="—"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Margin="0,15,0,0"
+                               Foreground="White"/>
+
+                                                    <TextBlock Text="Минимум трат"
+                               Margin="0,5,0,0"
+                               Foreground="#EAEAEA"/>
+
+                                                </StackPanel>
+
+                                            </Border>
+
+                                            <!-- WORST -->
+                                            <Border Grid.Column="2"
+                    Height="130"
+                    CornerRadius="20"
+                    Background="#25FFFFFF"
+                    Padding="18">
+
+                                                <StackPanel>
+
+                                                    <TextBlock Text="Худший день"
+                               FontSize="16"
+                               Foreground="#ECECEC"/>
+
+                                                    <TextBlock x:Name="txtWorstDay"
+                               Text="—"
+                               FontSize="24"
+                               FontWeight="Bold"
+                               Margin="0,15,0,0"
+                               Foreground="White"/>
+
+                                                    <TextBlock Text="Максимум трат"
+                               Margin="0,5,0,0"
+                               Foreground="#EAEAEA"/>
+
+                                                </StackPanel>
+
+                                            </Border>
+
+                                        </Grid>
+
+                                    </StackPanel>
+
+                                </Border>
+                                <!-- MOCK HEATMAP -->
+                                <UniformGrid Columns="7">
+
+                                    <Border Height="45" Margin="4" CornerRadius="10" Background="#35FFFFFF" Name="HeatMon"/>
+                                    <Border Height="45" Margin="4" CornerRadius="10" Background="#55FFFFFF" Name="HeatTue"/>
+                                    <Border Height="45" Margin="4" CornerRadius="10" Background="#25FFFFFF" Name="HeatWed"/>
+                                    <Border Height="45" Margin="4" CornerRadius="10" Background="#90FFFFFF" Name="HeatThu"/>
+                                    <Border Height="45" Margin="4" CornerRadius="10" Background="#40FFFFFF" Name="HeatFri"/>
+                                    <Border Height="45" Margin="4" CornerRadius="10" Background="#80FFFFFF" Name="HeatSat"/>
+                                    <Border Height="45" Margin="4" CornerRadius="10" Background="#30FFFFFF" Name="HeatSun"/>
+
+                                </UniformGrid>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- RECURRING -->
+                        <Border CornerRadius="30"
+        Padding="25"
+        Background="#7d6299">
+
+                            <StackPanel>
+
+                                <TextBlock Text="🔁 Повторяющиеся траты"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+
+                                <ItemsControl x:Name="RecurringItems"
+                      Margin="0,20,0,0">
+
+                                    <ItemsControl.ItemTemplate>
+
+                                        <DataTemplate>
+
+                                            <Border Background="#25FFFFFF"
+                            CornerRadius="18"
+                            Padding="15"
+                            Margin="0,0,0,10">
+
+                                                <Grid>
+
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <TextBlock Text="{Binding Name}"
+                                       FontSize="17"
+                                       Foreground="White"/>
+
+                                                    <TextBlock Grid.Column="1"
+                                       Text="{Binding Amount}"
+                                       FontSize="17"
+                                       FontWeight="Bold"
+                                       Foreground="White"/>
+
+                                                </Grid>
+
+                                            </Border>
+
+                                        </DataTemplate>
+
+                                    </ItemsControl.ItemTemplate>
+
+                                </ItemsControl>
+
+                            </StackPanel>
+
+                        </Border>
+                        <!-- FINANCIAL CONTROL -->
+                        <Border Height="200"
+CornerRadius="30"
+Padding="25"
+Margin="0,20"
+Background="#9e78c4">
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🎯 Контроль бюджета"
+           FontSize="22"
+           FontWeight="Bold"
+           Foreground="White"/>
+                                    <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenBudgetInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                </StackPanel>
+                                <TextBlock x:Name="txtBudgetControl" FontWeight="Bold"
+           Text="72% месячного лимита уже использовано"
+           FontSize="28"
+           Margin="0,40,0,0"
+           Foreground="#ECECEC"/>
+
+                            </StackPanel>
+
+                        </Border>
+                    </StackPanel>
+
+                    <!-- RIGHT SIDE -->
+                    <StackPanel Grid.Column="2">
+
+                        <!-- TREND -->
+                        <Border Height="180"
+                                CornerRadius="30"
+                                Padding="25"
+                                Margin="0,0,0,20"
+                                Background="#8a6ca9">
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="📈 Тренд расходов"
+                                           FontSize="22"
+                                           FontWeight="Bold"
+                                           Foreground="White"/>
+                                    <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenTrendInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                </StackPanel>
+                                
+
+                                <TextBlock x:Name="txtTrend"
+                                           Text="+18%"
+                                           FontSize="42"
+                                           Margin="0,20,0,0"
+                                           FontWeight="Bold"
+                                           Foreground="#FFB3B3"/>
+
+                                <TextBlock Text="по сравнению с прошлым месяцем"
+                                           FontSize="15"
+                                           Margin="0,8,0,0"
+                                           Foreground="#ECECEC"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- MOST DANGEROUS DAY -->
+                        <Border Height="180"
+                                CornerRadius="30"
+                                Padding="25"
+                                Margin="0,0,0,20"
+                                Background="#9e78c4">
+
+                            <StackPanel>
+
+                                <TextBlock Text="🔥 Самый затратный день"
+                                           FontSize="22"
+                                           FontWeight="Bold"
+                                           Foreground="White"/>
+
+                                <TextBlock x:Name="txtDangerDay"
+                                           Text="Суббота"
+                                           FontSize="40"
+                                           FontWeight="Bold"
+                                           Margin="0,20,0,0"
+                                           Foreground="White"/>
+
+                                <TextBlock Text="В этот день расходы выше среднего"
+                                           FontSize="15"
+                                           Margin="0,8,0,0"
+                                           Foreground="#ECECEC"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- MICRO PURCHASES -->
+                        <Border Height="180"
+                                CornerRadius="30"
+                                Padding="25"
+                                Margin="0,0,0,20"
+                                Background="#8b6aa8">
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🧾 Мелкие покупки"
+                                           FontSize="22"
+                                           FontWeight="Bold"
+                                           Foreground="White"/>
+                                    <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenMicroInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                </StackPanel>
+                                
+
+                                <TextBlock x:Name="txtMicroPercent"
+                                           Text="42%"
+                                           FontSize="42"
+                                           FontWeight="Bold"
+                                           Margin="0,20,0,0"
+                                           Foreground="#FFF1A8"/>
+
+                                <TextBlock Text="расходов составляют мелкие траты"
+                                           FontSize="15"
+                                           Margin="0,8,0,0"
+                                           Foreground="#ECECEC"/>
+
+                            </StackPanel>
+
+                        </Border>
+                        <!-- NIGHT SPENDING -->
+                        <Border Height="180"
+        CornerRadius="30"
+        Padding="25"
+        Margin="0,0,0,20"
+        Background="#7d6299">
+
+                            <StackPanel>
+
+                                <TextBlock Text="🌙 Ночные траты"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+
+                                <TextBlock x:Name="txtNightSpend"
+                   Text="27%"
+                   FontSize="42"
+                   FontWeight="Bold"
+                   Margin="0,20,0,0"
+                   Foreground="#FFF1A8"/>
+
+                                <TextBlock Text="расходов совершается после 22:00"
+                   FontSize="15"
+                   Margin="0,8,0,0"
+                   Foreground="#ECECEC"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                        <!-- FINANCIAL DNA -->
+                        <Border Height="220"
+        CornerRadius="30"
+        Padding="25"
+        Margin="0,0,0,20"
+        Background="#8d70ad">
+
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🧬 Финансовый профиль"
+                   FontSize="22"
+                   FontWeight="Bold"
+                   Foreground="White"/>
+                                    <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenProfileInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                </StackPanel>
+
+
+                                <TextBlock x:Name="txtFinanceProfile"
+                   Text="Рациональный spender"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   Margin="0,18,0,0"
+                   Foreground="White"
+                   TextWrapping="Wrap"/>
+
+                                <TextBlock Text="Ты редко выходишь за лимиты и контролируешь основные категории расходов." 
+                                           Name="txtFinanceProfileDescription"
+                   FontSize="15"
+                   Margin="0,12,0,0"
+                   TextWrapping="Wrap"
+                   Foreground="#ECECEC"/>
+
+                            </StackPanel>
+
+                        </Border>
+                        <!-- AI INSIGHTS -->
+                        <Border CornerRadius="30"
+                                Padding="25"
+                                Background="#6a5590">
+
+                            <StackPanel Name="AIStackPanel">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🧠 AI-Советы"
+                                           FontSize="24"
+                                           FontWeight="Bold"
+                                           Foreground="White"/>
+                                    <Button Content="?" Margin="7,0"
+        Width="28"
+        Height="28"
+        Background="#40FFFFFF"
+        Foreground="White"
+        BorderThickness="0"
+        Click="OpenAIInfo_Click"
+        Style="{StaticResource RoundButton30}"/>
+                                </StackPanel>
+                                
+                                
+                                <StackPanel Margin="0,15,0,0">
+
+                                    <Border Background="#25FFFFFF"
+                                            CornerRadius="16"
+                                            Padding="12"
+                                            Margin="0,0,0,10">
+
+                                        <TextBlock Text="Расходы растут быстрее доходов" Name="AIText1"
+                                                   FontSize="15"
+                                                   Foreground="White"
+                                                   TextWrapping="Wrap"/>
+
+                                    </Border>
+
+                                    <Border Background="#25FFFFFF"
+                                            CornerRadius="16"
+                                            Padding="12"
+                                            Margin="0,0,0,10">
+
+                                        <TextBlock Text="Ты чаще тратишь деньги вечером" Name="AIText2"
+                                                   FontSize="15"
+                                                   Foreground="White"
+                                                   TextWrapping="Wrap"/>
+
+                                    </Border>
+
+                                    <Border Background="#25FFFFFF"
+                                            CornerRadius="16"
+                                            Padding="12">
+
+                                        <TextBlock Text="Накопления держатся стабильно" Name="AIText3"
+                                                   FontSize="15"
+                                                   Foreground="White"
+                                                   TextWrapping="Wrap"/>
+
+                                    </Border>
+                                    <Border Background="#25FFFFFF"
+        CornerRadius="16"
+        Padding="12"
+        Margin="0,10,0,10">
+
+                                        <TextBlock Text="Расходы растут быстрее доходов" Name="AIText4"
+               FontSize="15"
+               Foreground="White"
+               TextWrapping="Wrap"/>
+
+                                    </Border>
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </Border>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </StackPanel>
+
+        </ScrollViewer>
+        <!-- ================= POPUPS / INFO BUTTONS ================= -->
+        <!-- ===================== -->
+        <!-- 🛒 СРЕДНИЙ ЧЕК -->
+        <!-- ===================== -->
+        <Grid x:Name="AvgCheckOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="🛒 Средний чек" 
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseAvgCheckInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Показывает среднюю сумму одной покупки за выбранный период."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- 💸 СЭКОНОМЛЕНО -->
+        <!-- ===================== -->
+        <Grid x:Name="SavedMoneyOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="💸 Сэкономлено"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseSavedMoneyInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Показывает сумму денег, которые не были потрачены в прошлом месяце и остались в бюджете."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- ⚡ ИМПУЛЬСИВНОСТЬ -->
+        <!-- ===================== -->
+        <Grid x:Name="ImpulseOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="⚡ Импульсивность"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseImpulseInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Показывает, насколько часто покупки совершаются без планирования."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- 🛡 СТАБИЛЬНОСТЬ -->
+        <!-- ===================== -->
+        <Grid x:Name="StabilityOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="🛡 Стабильность"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseStabilityInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Оценивает регулярность и предсказуемость твоих расходов."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- 📊 КАТЕГОРИИ -->
+        <!-- ===================== -->
+        <Grid x:Name="CategoryOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="📊 Категории расходов"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseCategoryInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Разделение трат по типам: еда, транспорт, развлечения и др."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- 📈 ТРЕНД -->
+        <!-- ===================== -->
+        <Grid x:Name="TrendOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="📈 Тренд расходов"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseTrendInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Показывает рост или снижение расходов относительно прошлого периода."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- 📅 АКТИВНОСТЬ -->
+        <!-- ===================== -->
+        <Grid x:Name="ActivityOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed" 
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="📅 Активность расходов"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseActivityInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Показывает, в какие дни недели ты тратишь больше всего."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- 🧾 МЕЛКИЕ ПОКУПКИ -->
+        <!-- ===================== -->
+        <Grid x:Name="MicroOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="🧾 Мелкие покупки"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseMicroInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Небольшие повседневные траты, которые часто не замечаются."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- 🎯 БЮДЖЕТ -->
+        <!-- ===================== -->
+        <Grid x:Name="BudgetOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="🎯 Контроль бюджета"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseBudgetInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Показывает, насколько ты соблюдаешь установленный финансовый лимит."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- 🧬 ПРОФИЛЬ -->
+        <!-- ===================== -->
+        <Grid x:Name="ProfileOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="🧬 Финансовый профиль"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseProfileInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Обобщённая характеристика твоего финансового поведения."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ===================== -->
+        <!-- 🧠 AI ИНСАЙТЫ -->
+        <!-- ===================== -->
+        <Grid x:Name="AIOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+                        <TextBlock Text="🧠 AI-инсайты"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseAIInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Автоматические выводы системы о твоих финансовых привычках."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <!-- ===================== -->
+        <!-- ⚠ ФИНАНСОВЫЙ РИСК -->
+        <!-- ===================== -->
+        <Grid x:Name="RiskOverlay" Grid.RowSpan="3"
+      Visibility="Collapsed"
+      Background="#80000000"
+      Panel.ZIndex="2000">
+
+            <Border Width="420"
+            Padding="25"
+            CornerRadius="25"
+            Background="#8a6ca9"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+
+                <StackPanel>
+
+                    <Grid>
+
+                        <TextBlock Text="⚠ Финансовый риск"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                        <Button Content="✕" Style="{StaticResource RoundButton30}"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        Background="#35FFFFFF"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Click="CloseRiskInfo_Click"/>
+                    </Grid>
+
+                    <TextBlock Text="Показывает общий уровень финансовой нестабильности на основе расходов, доходов и поведения трат."
+                       Foreground="#EAEAEA"
+                       Margin="0,20,0,0"
+                       TextWrapping="Wrap"/>
+
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+
+</Page>

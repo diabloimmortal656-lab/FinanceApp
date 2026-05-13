@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="FinanceDB">
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="Model.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+          <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+          <ScalarProperty Name="IDTypeCategory" ColumnName="IDTypeCategory" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="System" ColumnName="System" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Debt">
+      <EntityTypeMapping TypeName="Model.Debt">
+        <MappingFragment StoreEntitySet="Debt">
+          <ScalarProperty Name="IDDebt" ColumnName="IDDebt" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="IDTypeDebt" ColumnName="IDTypeDebt" />
+          <ScalarProperty Name="AmountDebt" ColumnName="AmountDebt" />
+          <ScalarProperty Name="PaidAmountDebt" ColumnName="PaidAmountDebt" />
+          <ScalarProperty Name="NoteDebt" ColumnName="NoteDebt" />
+          <ScalarProperty Name="DateDebt" ColumnName="DateDebt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goal">
+      <EntityTypeMapping TypeName="Model.Goal">
+        <MappingFragment StoreEntitySet="Goal">
+          <ScalarProperty Name="IDGoal" ColumnName="IDGoal" />
+          <ScalarProperty Name="NameGoal" ColumnName="NameGoal" />
+          <ScalarProperty Name="PaidAmountGoal" ColumnName="PaidAmountGoal" />
+          <ScalarProperty Name="AmountGoal" ColumnName="AmountGoal" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transaction">
+      <EntityTypeMapping TypeName="Model.Transaction">
+        <MappingFragment StoreEntitySet="Transaction">
+          <ScalarProperty Name="IDTransaction" ColumnName="IDTransaction" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="DateTransaction" ColumnName="DateTransaction" />
+          <ScalarProperty Name="IDCategory" ColumnName="IDCategory" />
+          <ScalarProperty Name="AmountTransaction" ColumnName="AmountTransaction" />
+          <ScalarProperty Name="NoteTransaction" ColumnName="NoteTransaction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeCategory">
+      <EntityTypeMapping TypeName="Model.TypeCategory">
+        <MappingFragment StoreEntitySet="TypeCategory">
+          <ScalarProperty Name="IDTypeCategory" ColumnName="IDTypeCategory" />
+          <ScalarProperty Name="NameTypeCategory" ColumnName="NameTypeCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeDebt">
+      <EntityTypeMapping TypeName="Model.TypeDebt">
+        <MappingFragment StoreEntitySet="TypeDebt">
+          <ScalarProperty Name="IDTypeDebt" ColumnName="IDTypeDebt" />
+          <ScalarProperty Name="NameTypeDebt" ColumnName="NameTypeDebt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Model.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RememberToken" ColumnName="RememberToken" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

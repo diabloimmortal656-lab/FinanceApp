@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="IDCategory" />
+    </Key>
+    <Property Name="IDCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDTypeCategory" Type="Int32" Nullable="false" />
+    <Property Name="IDUser" Type="Int32" Nullable="false" />
+    <Property Name="System" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TypeCategory" Relationship="Self.FK_Category_TypeCategory" FromRole="Category" ToRole="TypeCategory" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Category_Users" FromRole="Category" ToRole="Users" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK_Transaction_Category" FromRole="Category" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Debt">
+    <Key>
+      <PropertyRef Name="IDDebt" />
+    </Key>
+    <Property Name="IDDebt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDUser" Type="Int32" Nullable="false" />
+    <Property Name="IDTypeDebt" Type="Int32" Nullable="false" />
+    <Property Name="AmountDebt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="PaidAmountDebt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NoteDebt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateDebt" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TypeDebt" Relationship="Self.FK_Debt_TypeDebt1" FromRole="Debt" ToRole="TypeDebt" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Debt_Users" FromRole="Debt" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Goal">
+    <Key>
+      <PropertyRef Name="IDGoal" />
+    </Key>
+    <Property Name="IDGoal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameGoal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PaidAmountGoal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="AmountGoal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="IDUser" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Goal_Users" FromRole="Goal" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="IDTransaction" />
+    </Key>
+    <Property Name="IDTransaction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDUser" Type="Int32" Nullable="false" />
+    <Property Name="DateTransaction" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IDCategory" Type="Int32" Nullable="false" />
+    <Property Name="AmountTransaction" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="NoteTransaction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Transaction_Category" FromRole="Transaction" ToRole="Category" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Transaction_Users" FromRole="Transaction" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="TypeCategory">
+    <Key>
+      <PropertyRef Name="IDTypeCategory" />
+    </Key>
+    <Property Name="IDTypeCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameTypeCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Category_TypeCategory" FromRole="TypeCategory" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="TypeDebt">
+    <Key>
+      <PropertyRef Name="IDTypeDebt" />
+    </Key>
+    <Property Name="IDTypeDebt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameTypeDebt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Debt" Relationship="Self.FK_Debt_TypeDebt1" FromRole="TypeDebt" ToRole="Debt" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RememberToken" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Category_Users" FromRole="Users" ToRole="Category" />
+    <NavigationProperty Name="Debt" Relationship="Self.FK_Debt_Users" FromRole="Users" ToRole="Debt" />
+    <NavigationProperty Name="Goal" Relationship="Self.FK_Goal_Users" FromRole="Users" ToRole="Goal" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK_Transaction_Users" FromRole="Users" ToRole="Transaction" />
+  </EntityType>
+  <Association Name="FK_Category_TypeCategory">
+    <End Role="TypeCategory" Type="Self.TypeCategory" Multiplicity="1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeCategory">
+        <PropertyRef Name="IDTypeCategory" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="IDTypeCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Category_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="IDCategory" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="IDCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Debt_TypeDebt1">
+    <End Role="TypeDebt" Type="Self.TypeDebt" Multiplicity="1" />
+    <End Role="Debt" Type="Self.Debt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeDebt">
+        <PropertyRef Name="IDTypeDebt" />
+      </Principal>
+      <Dependent Role="Debt">
+        <PropertyRef Name="IDTypeDebt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Debt_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Debt" Type="Self.Debt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Debt">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goal_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Goal" Type="Self.Goal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Goal">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FinanceDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Debt" EntityType="Self.Debt" />
+    <EntitySet Name="Goal" EntityType="Self.Goal" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" />
+    <EntitySet Name="TypeCategory" EntityType="Self.TypeCategory" />
+    <EntitySet Name="TypeDebt" EntityType="Self.TypeDebt" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Category_TypeCategory" Association="Self.FK_Category_TypeCategory">
+      <End Role="TypeCategory" EntitySet="TypeCategory" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_Users" Association="Self.FK_Category_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_Category" Association="Self.FK_Transaction_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Debt_TypeDebt1" Association="Self.FK_Debt_TypeDebt1">
+      <End Role="TypeDebt" EntitySet="TypeDebt" />
+      <End Role="Debt" EntitySet="Debt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Debt_Users" Association="Self.FK_Debt_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Debt" EntitySet="Debt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goal_Users" Association="Self.FK_Goal_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Goal" EntitySet="Goal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_Users" Association="Self.FK_Transaction_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
